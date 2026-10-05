@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { io } from 'socket.io-client';
-import api from '../api';
+import api, { realtimeUrl } from '../api';
 import { useAuth } from './AuthContext';
 import { useToast } from './ToastContext';
 
@@ -32,7 +32,7 @@ export function RealtimeProvider({ children }) {
 
   useEffect(() => {
     if (!user) { setSocket(null); setUnread(0); return; }
-    const s = io({ auth: { token: localStorage.getItem('ss_token') } });
+    const s = io(realtimeUrl, { auth: { token: localStorage.getItem('ss_token') } });
     setSocket(s);
     refreshUnread();
     return () => s.disconnect();

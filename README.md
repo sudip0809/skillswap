@@ -29,7 +29,10 @@ npm run dev
 ```
 Open http://localhost:5173. Vite proxies `/api` and `/socket.io` to the backend, so no extra config is needed.
 
-## 4. Trying it out
+## 4. Production deployment
+Deploy the frontend and backend separately. The frontend uses `https://skillswap-cign.onrender.com` as its production backend by default. If your backend is deployed at a different URL, set the frontend build environment variable `VITE_BACKEND_URL` to the backend origin (for example, `https://your-api.example.com`) and redeploy. The app uses hash-based routes, so direct links and page refreshes work on static hosts without additional rewrite rules.
+
+## 5. Trying it out
 The database starts empty. There is no dummy data. Create two accounts (use a normal window and a private window), give them matching skills (A teaches what B wants and the other way round), then:
 1. Find matches, View profile, Send swap request.
 2. The other user accepts under Requests, which opens the Exchange room.
